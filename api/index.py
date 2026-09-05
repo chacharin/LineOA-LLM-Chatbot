@@ -1,29 +1,3 @@
-"""
-============================================================
- LINE Chatbot x OpenRouter API (FastAPI, deploy บน Vercel)
- แบบ Stateless — ไม่มี Chat History, ไม่มี RAG
- - ทุกคำตอบพ่วงชื่อผู้ใช้ + userId ต่อท้ายเสมอ
- - ถ้า AI ตอบว่าไม่ทราบ (นอกขอบเขต knowledge) จะ push แจ้งแอดมินอัตโนมัติ
-============================================================
-
-วิธีติดตั้ง (สรุป)
-----------------------------------------------------------
-1) คัดลอก .env.example เป็น .env แล้วใส่ค่าจริง:
-     LINE_CHANNEL_ACCESS_TOKEN, LINE_CHANNEL_SECRET,
-     OPENROUTER_API_KEY, ADMIN_USER_ID
-2) แก้ system prompt ได้ที่ไฟล์ prompt.txt (โหลดตอน cold start)
-3) รันทดสอบในเครื่อง:
-     pip install -r requirements-dev.txt
-     uvicorn api.index:app --reload --port 8000
-4) Deploy ขึ้น Vercel:
-     vercel            # ครั้งแรก
-     vercel --prod     # ขึ้น production
-   แล้วนำค่าตัวแปรใน .env ไปตั้งใน Vercel Project Settings > Environment Variables
-5) เอา URL ที่ได้ (เช่น https://xxx.vercel.app/webhook) ไปวางใน
-   LINE Developers Console > Messaging API > Webhook settings > Webhook URL
-   แล้วกด Verify และเปิดสวิตช์ "Use webhook"
-"""
-
 from __future__ import annotations
 
 import base64
